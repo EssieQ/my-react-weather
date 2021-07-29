@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather cityName="London" />
         <footer>
           This project is created by Esther Cauven and is{" "}
           <a href="https://github.com/EssieQ/my-react-weather" target="_blank">
