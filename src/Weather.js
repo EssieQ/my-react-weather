@@ -1,25 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherState, setWeatherState] = useState({ loaded: false });
 
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherState({
       loaded: true,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
+      date: new Date(response.data.dt * 1000),
     });
   }
 
-  const apiKey = "bd915d97f51d3c0651893d85326bd29d";
-  let city = props.cityName;
-  let units = "metric";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(handleResponse);
+  function search() {
+    const apiKey = "bd915d97f51d3c0651893d85326bd29d";
+    let city = props.cityName;
+    let units = "metric";
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
 
   if (weatherState.loaded) {
     return (
@@ -44,7 +49,9 @@ export default function Weather(props) {
         </form>
         <h1>{props.cityName}</h1>
         <ul>
-          <li>Tuesday 5.25PM</li>
+          <li>
+            <FormattedDate date={weatherState.date} />
+          </li>
           <li>{weatherState.description}</li>
         </ul>
         <div className="row mt-3">
@@ -67,6 +74,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
+    search();
     return (
       <div className="Weather">
         <h1>Loading weather for {props.cityName}...</h1>
