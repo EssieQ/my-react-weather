@@ -30,13 +30,6 @@
   border: #c70039;
 }
 
-.Weather img {
-  line-height: 64px;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 10px;
-}
-
 .Weather .temperature {
   color: #900c3f;
   font-weight: 400;
