@@ -43,3 +43,12 @@
   position: relative;
   top: -38px;
 }
+
+a {
+  text-decoration: none;
+  color: #ed6663;
+}
+
+a:hover {
+  color: #c70039;
+}
