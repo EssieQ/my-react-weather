@@ -6,10 +6,14 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather cityName="London" />
+        <Weather cityName="Brisbane" />
         <footer>
           This project is created by Esther Cauven and is{" "}
-          <a href="https://github.com/EssieQ/my-react-weather" target="_blank">
+          <a
+            href="https://github.com/EssieQ/my-react-weather"
+            target="_blank"
+            rel="noreferrer"
+          >
             open-sourced on GitHub
           </a>
         </footer>
